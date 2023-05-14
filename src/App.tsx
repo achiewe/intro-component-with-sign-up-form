@@ -2,14 +2,14 @@ import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
 import MobBg from "../src/images/bg-intro-mobile.png";
 import PageHeader from "./components/PageHeader";
-import PricingBanner from "./components/PricingBanner";
+import SignUpForm from "./components/SignupForm";
 
 function App(): JSX.Element {
   return (
     <StyledMainContainer>
       <GlobalStyles />
       <PageHeader />
-      <PricingBanner />
+      <SignUpForm />
     </StyledMainContainer>
   );
 }
