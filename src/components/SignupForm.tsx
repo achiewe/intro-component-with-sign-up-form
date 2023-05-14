@@ -114,8 +114,6 @@ const Form = styled.form<{}>`
     padding: 15px 0 15px 19.41px;
     border: 1px solid #dedede;
     border-radius: 5px;
-    /* border: ${(props) =>
-      props.onSubmit ? "1px solid #dedede" : "2px solid #FF7979"}; */
   }
 
   p {
