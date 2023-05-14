@@ -5,7 +5,6 @@ import schema from "./schema";
 import { yupResolver } from "@hookform/resolvers/yup";
 import inputTypes from "../components/type";
 import inconError from "../images/icon-error.svg";
-import { useState } from "react";
 
 const SignUpForm = (): JSX.Element => {
   const {
