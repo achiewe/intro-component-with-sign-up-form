@@ -11,7 +11,10 @@ const schema = yup.object().shape({
     .string()
     .required("Last Name cannot be empty")
     .matches(latinRegex, "Last Name must only contain Latin characters"),
-  email: yup.string().email().required("Looks like this is not an email"),
+  email: yup
+    .string()
+    .email("Looks like this is not an email")
+    .required("Email cannot be empty"),
   password: yup.string().min(8).max(20).required(),
 });
 
