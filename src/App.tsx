@@ -1,11 +1,13 @@
 import GlobalStyles from "./GlobalStyles";
 import styled from "styled-components";
 import MobBg from "../src/images/bg-intro-mobile.png";
+import PageHeader from "./components/PageHeader";
 
 function App(): JSX.Element {
   return (
     <StyledMain>
       <GlobalStyles />
+      <PageHeader />
     </StyledMain>
   );
 }
