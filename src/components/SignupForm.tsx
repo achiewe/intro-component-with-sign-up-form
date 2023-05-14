@@ -1,26 +1,67 @@
 import styled from "styled-components";
+import { useForm } from "react-hook-form";
 import PricingBanner from "./PricingBanner";
+import schema from "./schema";
+import { yupResolver } from "@hookform/resolvers/yup";
+import inputTypes from "../components/type";
+import inconError from "../images/icon-error.svg";
+import { useState } from "react";
 
 const SignUpForm = (): JSX.Element => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<inputTypes>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = (data: inputTypes) => {
+    console.log(data);
+  };
   return (
     <SignUpMain>
       <PricingBanner />
-      <Form>
+      <Form onSubmit={handleSubmit(onSubmit)}>
         <label>
-          <input type="text" placeholder="First Name" />
+          <input
+            type="text"
+            placeholder="First Name"
+            {...register("firstName")}
+          />
+          <img src={inconError} alt="error icon" />
+          <p>{errors.firstName?.message} </p>
         </label>
         <label>
-          <input type="text" placeholder="Last Name" />
+          <input
+            type="text"
+            placeholder="Last Name"
+            {...register("lastName")}
+          />
+          <img src={inconError} alt="error icon" />
+          <p>{errors.lastName?.message} </p>
         </label>
         <label>
-          <input type="email" placeholder="Email Address" />
+          <input
+            type="email"
+            placeholder="Email Address"
+            {...register("email")}
+          />
+          <img src={inconError} alt="error icon" />
+          <p>{errors.email?.message} </p>
         </label>
         <label>
-          <input type="password" placeholder="Password" />
+          <input
+            type="password"
+            placeholder="Password"
+            {...register("password")}
+          />
+          <img src={inconError} alt="error icon" />
+          <p>{errors.password?.message} </p>
         </label>
         <div>
           <button>CLAIM YOUR FREE TRIAL</button>
-          <p>
+          <p className="p-click">
             By clicking the button, you are agreeing to our{" "}
             <span>Terms and Services</span>
           </p>
@@ -39,12 +80,13 @@ const SignUpMain = styled.main`
   gap: 24px;
 `;
 
-const Form = styled.form`
+const Form = styled.form<{}>`
   width: 327px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
   gap: 16px;
   padding: 24px;
   background-color: #ffffff;
@@ -52,8 +94,20 @@ const Form = styled.form`
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
 
   label {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     width: 100%;
+    gap: 6px;
+    position: relative;
+  }
+
+  img {
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    display: block;
   }
 
   input {
@@ -61,6 +115,18 @@ const Form = styled.form`
     padding: 15px 0 15px 19.41px;
     border: 1px solid #dedede;
     border-radius: 5px;
+    /* border: ${(props) =>
+      props.onSubmit ? "1px solid #dedede" : "2px solid #FF7979"}; */
+  }
+
+  p {
+    font-size: 11px;
+    font-style: italic;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: 0px;
+    text-align: right;
+    color: #ff7979;
   }
 
   ::placeholder {
@@ -93,7 +159,7 @@ const Form = styled.form`
       color: #ffffff;
     }
 
-    p {
+    .p-click {
       font-size: 11px;
       font-weight: 500;
       line-height: 21px;
