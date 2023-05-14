@@ -91,6 +91,9 @@ const SignUpMain = styled.main`
   justify-content: center;
   align-items: center;
   gap: 24px;
+  @media (min-width: 1024px) {
+    width: 540px;
+  }
 `;
 
 const Form = styled.form<{
@@ -104,12 +107,16 @@ const Form = styled.form<{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   gap: 16px;
   padding: 24px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
+  @media (min-width: 1024px) {
+    width: 100%;
+    padding: 40px;
+    gap: 20px;
+  }
 
   label {
     display: flex;
@@ -148,6 +155,10 @@ const Form = styled.form<{
     padding: 15px 0 15px 19.41px;
     border: 1px solid #dedede;
     border-radius: 5px;
+
+    @media (min-width: 1024px) {
+      padding: 15px 0 15px 32px;
+    }
   }
 
   input:focus {
@@ -212,6 +223,16 @@ const Form = styled.form<{
       letter-spacing: 1px;
       text-align: left;
       color: #ffffff;
+      cursor: pointer;
+      @media (min-width: 1024px) {
+        width: 460px;
+        text-align: center;
+        padding: 15px 0;
+      }
+    }
+
+    button:hover {
+      background-color: #77e2b3;
     }
 
     .p-click {
@@ -221,7 +242,12 @@ const Form = styled.form<{
       letter-spacing: 0px;
       text-align: center;
       color: #bab7d4;
+      font-style: normal;
       width: 249px;
+      @media (min-width: 1024px) {
+        line-height: 26px;
+        width: 100%;
+      }
 
       span {
         font-size: 11px;

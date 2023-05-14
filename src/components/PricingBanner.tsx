@@ -17,7 +17,7 @@ const BannerDiv = styled.div`
   border-radius: 10px;
   box-shadow: 0px 8px 0px rgba(0, 0, 0, 0.14688);
   @media (min-width: 1024px) {
-    width: 100%;
+    width: 540px;
     padding: 17px 0;
   }
   p {
