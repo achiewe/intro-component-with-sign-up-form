@@ -15,11 +15,15 @@ const PageHeader = (): JSX.Element => {
 
 const HeaderDiv = styled.header`
   width: 100%;
+  max-width: 525px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 16px;
+  @media (min-width: 1024px) {
+    gap: 40px;
+  }
 
   h1 {
     font-size: 28px;
@@ -28,6 +32,13 @@ const HeaderDiv = styled.header`
     letter-spacing: -0.2916666865348816px;
     text-align: center;
     color: #ffffff;
+    @media (min-width: 1024px) {
+      font-size: 50px;
+      font-weight: 700;
+      line-height: 55px;
+      letter-spacing: -0.5208333134651184px;
+      text-align: left;
+    }
   }
 
   p {
@@ -37,6 +48,13 @@ const HeaderDiv = styled.header`
     letter-spacing: 0px;
     text-align: center;
     color: #ffffff;
+    @media (min-width: 1024px) {
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 26px;
+      letter-spacing: 0px;
+      text-align: left;
+    }
   }
 `;
 

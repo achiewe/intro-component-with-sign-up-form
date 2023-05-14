@@ -18,44 +18,58 @@ const SignUpForm = (): JSX.Element => {
   const onSubmit = (data: inputTypes) => {
     console.log(data);
   };
+
+  console.log(!!errors.firstName);
+
   return (
     <SignUpMain>
       <PricingBanner />
-      <Form onSubmit={handleSubmit(onSubmit)}>
+      <Form
+        errorfirstame={!!errors.firstName}
+        errorlastname={!!errors.lastName}
+        erroremail={!!errors.email}
+        errorpassword={!!errors.password}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <label>
           <input
+            className="first-name"
             type="text"
             placeholder="First Name"
             {...register("firstName")}
           />
-          <img src={inconError} alt="error icon" />
+
+          <img className="first" src={inconError} alt="error icon" />
           <p>{errors.firstName?.message} </p>
         </label>
         <label>
           <input
+            className="last-name"
             type="text"
             placeholder="Last Name"
             {...register("lastName")}
           />
-          <img src={inconError} alt="error icon" />
+          <img className="last" src={inconError} alt="error icon" />
           <p>{errors.lastName?.message} </p>
         </label>
         <label>
           <input
+            className="email"
             type="email"
             placeholder="Email Address"
             {...register("email")}
           />
-          <img src={inconError} alt="error icon" />
+          <img className="email-image" src={inconError} alt="error icon" />
           <p>{errors.email?.message} </p>
         </label>
         <label>
           <input
+            className="password"
             type="password"
             placeholder="Password"
             {...register("password")}
           />
-          <img src={inconError} alt="error icon" />
+          <img className="password-image" src={inconError} alt="error icon" />
           <p>{errors.password?.message} </p>
         </label>
         <div>
@@ -79,7 +93,12 @@ const SignUpMain = styled.main`
   gap: 24px;
 `;
 
-const Form = styled.form<{}>`
+const Form = styled.form<{
+  errorfirstame: boolean;
+  errorlastname: boolean;
+  erroremail: boolean;
+  errorpassword: boolean;
+}>`
   width: 327px;
   display: flex;
   flex-direction: column;
@@ -106,7 +125,22 @@ const Form = styled.form<{}>`
     position: absolute;
     top: 15px;
     right: 10px;
-    display: block;
+  }
+
+  .first {
+    display: ${(props) => (props.errorfirstame ? "block" : "none")};
+  }
+
+  .last {
+    display: ${(props) => (props.errorlastname ? "block" : "none")};
+  }
+
+  .email-image {
+    display: ${(props) => (props.erroremail ? "block" : "none")};
+  }
+
+  .password-image {
+    display: ${(props) => (props.errorpassword ? "block" : "none")};
   }
 
   input {
@@ -114,6 +148,30 @@ const Form = styled.form<{}>`
     padding: 15px 0 15px 19.41px;
     border: 1px solid #dedede;
     border-radius: 5px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .first-name {
+    border: ${(props) =>
+      props.errorfirstame ? "2px solid #FF7979" : "1px solid #dedede"};
+  }
+
+  .last-name {
+    border: ${(props) =>
+      props.errorlastname ? "2px solid #FF7979" : "1px solid #dedede"};
+  }
+
+  .email {
+    border: ${(props) =>
+      props.erroremail ? "2px solid #FF7979" : "1px solid #dedede"};
+  }
+
+  .password {
+    border: ${(props) =>
+      props.errorpassword ? "2px solid #FF7979" : "1px solid #dedede"};
   }
 
   p {
